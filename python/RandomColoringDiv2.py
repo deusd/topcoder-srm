@@ -120,26 +120,47 @@ Returns: 47439
 This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
 """
 
+# first attempt: 1h
+# class RandomColoringDiv2:
+#     @staticmethod
+#     def getCount(maxR, maxG, maxB, startR, startG, startB, d1, d2):
+#         T = 0
 
+#         d = d2
+#         for r in range(startR - d, startR + d + 1):
+#             if 0 <= r < maxR: 
+#                 for g in range(startG - d, startG + d + 1):
+#                     if 0 <= g < maxG: 
+#                         for b in range(startB - d, startB + d + 1):
+#                             if 0 <= b < maxB:
+#                                 if abs(r - startR) >= d1 or abs(g - startG) >= d1 or abs(b - startB) >= d1:
+#                                     T += 1
+
+#         return T
+
+# second attept: 2m
 class RandomColoringDiv2:
     @staticmethod
     def getCount(maxR, maxG, maxB, startR, startG, startB, d1, d2):
         T = 0
 
-        d = d2
-        for r in range(startR - d, startR + d + 1):
-            if 0 <= r < maxR: 
-                for g in range(startG - d, startG + d + 1):
-                    if 0 <= g < maxG: 
-                        for b in range(startB - d, startB + d + 1):
+        for r in range(startR - d2, startR + d2 + 1):
+            if 0 <= r < maxR:
+                for g in range(startG - d2, startG + d2 + 1):
+                    if 0 <= g < maxG:
+                        for b in range(startB - d2, startB + d2 + 1):
                             if 0 <= b < maxB:
                                 if abs(r - startR) >= d1 or abs(g - startG) >= d1 or abs(b - startB) >= d1:
                                     T += 1
 
         return T
 
-# print (RandomColoringDiv2.getCount(5, 1, 1, 2, 0, 0, 0, 1)) # 3
-# print (RandomColoringDiv2.getCount(4, 2, 2, 0, 0, 0, 3, 3)) # 4
-# print (RandomColoringDiv2.getCount(4, 2, 2, 0, 0, 0, 5, 5)) # 0
-print (RandomColoringDiv2.getCount(6, 9, 10, 1, 2, 3, 0, 10)) # 540
+if __name__ == "__main__":
+    print (RandomColoringDiv2.getCount(5, 1, 1, 2, 0, 0, 0, 1)) # 3
+    print (RandomColoringDiv2.getCount(4, 2, 2, 0, 0, 0, 3, 3)) # 4
+    print (RandomColoringDiv2.getCount(4, 2, 2, 0, 0, 0, 5, 5)) # 0
+    print (RandomColoringDiv2.getCount(6, 9, 10, 1, 2, 3, 0, 10)) # 540
+    print (RandomColoringDiv2.getCount(6, 9, 10, 1, 2, 3, 4, 10)) # 330
+    print (RandomColoringDiv2.getCount(49, 59, 53, 12, 23, 13, 11, 22)) # 47439
+
 
